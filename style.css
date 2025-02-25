@@ -82,3 +82,66 @@ nav ul li a {
   margin: 10px;
   border: 1px solid #fff;
 }
+
+/* レスポンシブデザインの追加 */
+@media (max-width: 768px) {
+  .intro, .projects, #contact {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .gallery {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  #main_image img {
+    width: 100%;
+    height: auto;
+  }
+
+  #thumbnails img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .intro, .projects, #contact {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  #main_image img {
+    width: 100%;
+    height: auto;
+  }
+
+  #thumbnails img {
+    width: 90px;
+    height: 90px;
+  }
+
+  nav ul {
+    text-align: center;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
