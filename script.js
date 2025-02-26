@@ -38,16 +38,3 @@ document.addEventListener("DOMContentLoaded", function() {
         thumbnails.appendChild(thumbnailImage);
     });
 });
-
-// クッキーの確認とパネルの削除
-const agree = Cookies.get('cookie-agree');
-const panel = document.getElementById('privacy-panel');
-
-if (agree === 'yes') {
-    document.body.removeChild(panel); // クッキー承認後にパネルを非表示
-} else {
-    document.getElementById('agreebtn').onclick = function() {
-        Cookies.set('cookie-agree', 'yes', { expires: 7 });
-        document.body.removeChild(panel); // 承認ボタンをクリックしたらパネルを非表示
-    };
-}
