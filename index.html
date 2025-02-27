@@ -23,6 +23,7 @@
     <section class="intro">
         <h2>自己紹介</h2>
         <p>名前 : 半晴 大輝
+        <section class="timer">誕生日まで、あと<span id="day"></span>日<span id="hour"></span>時間<span id="min"></span>分<span id="sec"></span>秒</section>
            <br>学習開始 : 2025年2月21日からJavaScriptを勉強開始
            <br>今後学びたい技術 : TypeScript、React、GO、Python、AWSなど
            <br>趣味 : サーフィン、アニメ、漫画、映画鑑賞
@@ -49,9 +50,8 @@
         <p>当サイトではユーザーエクスペリエンス向上のためクッキーを使用しています。また、匿名でアクセス状況のデータを収集しています。詳しい情報は当サイトのプライバシーポリシーをご覧ください。</p>
         <button id="agreebtn">承認する</button>
     </div>
-<script>
-'use strict';
-
+<script src="script.js">
+'use strict'
 const agree = Cookies.get('cookie-agree');
 const panel = document.getElementById('privacy-panel')
 if(agree === 'yes') {
@@ -64,6 +64,7 @@ if(agree === 'yes') {
         document.body.removeChild(panel);
     };
 }
+
 </script>
 </body>
 </html>
