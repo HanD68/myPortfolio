@@ -5,28 +5,75 @@
   box-sizing: border-box;
 }
 
-/* 基本フォント */
+/* 背景画像の設定 */
 body {
+  background: url('images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9; /* 明るい背景 */
-  color: #333;
-  padding: 0 20px;
+  text-align: center;
+}
+
+/* 背景の上に半透明のオーバーレイ */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* 透明度を調整 */
+  z-index: -1;
+}
+
+/* コンテンツ全体 */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+/* 各セクション（透明度あり） */
+section {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  section {
+    max-width: 90%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    max-width: 95%;
+    padding: 10px;
+  }
 }
 
 /* ヘッダー */
 header {
-  background-color: #fff;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 auto 20px;  /* 横を自動で中央に、下に20pxの余白を追加 */
+  max-width: 900px;
+  text-align: center;  /* 見出しを中央揃え */
 }
 
 header h1 {
   font-size: 2.5em;
-  color: #4CAF50; /* 明るいグリーン */
+  color: #4CAF50;
 }
 
+/* ナビゲーション */
 nav ul {
   list-style: none;
   display: flex;
@@ -47,24 +94,19 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #4CAF50; /* ホバー時にグリーン */
+  color: #4CAF50;
 }
 
-/* ギャラリーとポートフォリオのセクション */
-section {
-  margin-top: 20px;
-}
-
-h2 {
-  font-size: 1.8em;
-  margin-bottom: 10px;
+/* フッター */
+footer {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  margin: 20px auto 0; /* 上に20px、下は自動中央揃え */
+  font-size: 0.9em;
   color: #333;
-}
-
-/* ポートフォリオページの自己紹介セクション */
-.intro p {
-  line-height: 1.8;
-  margin-top: 10px;
+  max-width: 900px;
+  text-align: center;  /* フッター内のテキストを中央揃え */
 }
 
 /* ギャラリーセクション */
@@ -79,21 +121,22 @@ h2 {
 
 #main_image img {
   width: 80%;
-  max-width: 1000px; /* 最大幅を設定 */
+  max-width: 800px; /* メイン画像の最大幅を800pxに制限 */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* サムネイル画像のスタイル */
 #thumbnails {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 #thumbnails img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 5px;
   transition: transform 0.3s;
@@ -101,79 +144,18 @@ h2 {
 }
 
 #thumbnails img:hover {
-  transform: scale(1.1); /* サムネイル画像をホバー時に拡大 */
-}
-
-/* フッター */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 0.9em;
-}
-
-/* ライトボックスのスタイル */
-#lightbox {
-  display: none; /* 初期状態では非表示 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-/* メイン画像にアニメーション */
-#gallery-main-img {
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* サムネイル画像のホバーエフェクト */
-.thumbnail:hover {
   transform: scale(1.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-/* レスポンシブデザイン */
+/* モバイル対応 */
 @media (max-width: 768px) {
-  header h1 {
-      font-size: 2em; /* 見出しを少し小さく */
-  }
-
   #main_image img {
-      width: 90%; /* モバイルでも画像を画面幅に合わせる */
+    width: 90%;
+    max-width: 600px; /* スマホではもう少し小さく */
   }
 
   #thumbnails img {
-      width: 80px;
-      height: 80px;
-  }
-
-  footer {
-      font-size: 0.8em;
-  }
-
-  .intro p {
-      font-size: 0.9em; /* モバイルでの文字サイズ調整 */
-  }
-}
-
-@media (max-width: 480px) {
-  #thumbnails img {
-      width: 70px;
-      height: 70px;
+    width: 60px;
+    height: 60px; /* サムネイルサイズを縮小 */
   }
 }
