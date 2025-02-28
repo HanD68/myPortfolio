@@ -6,7 +6,6 @@
     <title>ポートフォリオ</title>
     <link rel="stylesheet" href="style.css">
     <link href="panel.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 </head>
 <body>
     <header>
@@ -50,21 +49,6 @@
         <p>当サイトではユーザーエクスペリエンス向上のためクッキーを使用しています。また、匿名でアクセス状況のデータを収集しています。詳しい情報は当サイトのプライバシーポリシーをご覧ください。</p>
         <button id="agreebtn">承認する</button>
     </div>
-<script src="script.js">
-'use strict'
-const agree = Cookies.get('cookie-agree');
-const panel = document.getElementById('privacy-panel')
-if(agree === 'yes') {
-    // console.log('クッキーを確認しました');
-    document.body.removeChild(panel);
-} else {
-    // console.log('クッキーを確認できません');
-    document.getElementById('agreebtn').onclick = function() {
-        Cookies.set('cookie-agree', 'yes', {expires: 7});
-        document.body.removeChild(panel);
-    };
-}
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>
